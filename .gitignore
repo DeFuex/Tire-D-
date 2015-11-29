@@ -39,6 +39,9 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+#Documentation
+*.odt
+
 # Build results
 bin/
 ipch/
