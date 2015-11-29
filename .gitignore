@@ -40,6 +40,9 @@
 *.userprefs
 
 # Build results
+bin/
+ipch/
+temp/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
