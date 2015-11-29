@@ -1,0 +1,5 @@
+[Tire]
+mesh=tire.3ds
+location=4 0 0
+rotation=0 0 0
+scale=0.02 0.02 0.02

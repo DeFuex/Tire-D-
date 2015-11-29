@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{06368F9E-AC5A-4262-AC05-434A32A38A21}</ProjectGuid>
+    <RootNamespace>Tired</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(ProjectDir)external\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)external\include;$(IncludePath)</IncludePath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+    <OutDir>$(SolutionDir)\bin\</OutDir>
+    <TargetName>$(ProjectName)_$(Configuration)_$(Platform)</TargetName>
+    <IntDir>$(SolutionDir)\temp\$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+    <IncludePath>$(ProjectDir)external\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)external\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)\bin\</OutDir>
+    <TargetName>$(ProjectName)_$(Configuration)_$(Platform)</TargetName>
+    <IntDir>$(SolutionDir)\temp\$(Configuration)_$(Platform)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Command>cd "$(ProjectDir)external\lib"
+copy *.dll "$(TargetDir)"
+
+rd "$(TargetDir)content\" /S /Q
+md "$(TargetDir)content\"
+cd "$(ProjectDir)content"
+xcopy * "$(TargetDir)content\" /E /Y
+
+exit 0</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Command>cd "$(ProjectDir)external\lib"
+copy *.dll "$(TargetDir)"
+
+rd "$(TargetDir)content\" /S /Q
+md "$(TargetDir)content\"
+cd "$(ProjectDir)content"
+xcopy * "$(TargetDir)content\" /E /Y
+
+exit 0</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="IndexBuffer.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="SceneGraph.cpp" />
+    <ClCompile Include="VertexBuffer.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ContentManager.cpp" />
+    <ClCompile Include="VertexAttribute.cpp" />
+    <ClCompile Include="VertexAttributeManager.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="Resource.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Uniform.cpp" />
+    <ClCompile Include="UniformManager.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="OpenGL.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="IndexBuffer.hpp" />
+    <ClInclude Include="Mesh.hpp" />
+    <ClInclude Include="SceneGraph.hpp" />
+    <ClInclude Include="VertexBuffer.hpp" />
+    <ClInclude Include="Window.hpp" />
+    <ClInclude Include="Camera.hpp" />
+    <ClInclude Include="ContentManager.hpp" />
+    <ClInclude Include="VertexAttribute.hpp" />
+    <ClInclude Include="VertexAttributeManager.hpp" />
+    <ClInclude Include="Model.hpp" />
+    <ClInclude Include="Resource.hpp" />
+    <ClInclude Include="ResourceManager.hpp" />
+    <ClInclude Include="Shader.hpp" />
+    <ClInclude Include="Texture.hpp" />
+    <ClInclude Include="Uniform.hpp" />
+    <ClInclude Include="UniformManager.hpp" />
+    <ClInclude Include="OpenGL.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="content\meshes\quad.txt" />
+    <None Include="content\meshes\tire.3ds" />
+    <None Include="content\meshes\triangle.txt" />
+    <None Include="content\scene\scene1.txt" />
+    <None Include="content\shader\SimpleShader.f.glsl" />
+    <None Include="content\shader\SimpleShader.v.glsl" />
+    <None Include="content\shader\TextureShader.f.glsl" />
+    <None Include="content\shader\TextureShader.v.glsl" />
+    <None Include="content\textures\GrillMetal.tga" />
+    <None Include="content\textures\tire_texture.tga" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
